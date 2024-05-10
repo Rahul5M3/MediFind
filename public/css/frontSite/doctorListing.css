@@ -1,0 +1,51 @@
+body {
+    background-color: #f0f8ff;
+}
+
+.box {
+    height: 122px;
+    width: 96%;
+    background-color: white;
+    position: relative;
+    left: 26px;
+    top: 40px;
+    padding: 10px;
+    margin: 0px 0px 7px;
+    border-radius: 10px;
+    display: flex;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    margin-bottom: 1rem
+}
+
+.box #a {
+    height: 100%;
+    width: 100px;
+}
+
+.box #a div {
+    height: 90px;
+    width: 100px;
+    background-color: black;
+    border-radius: 50%;
+}
+
+.box #b {
+    flex: 2;
+}
+
+.box #b p {
+    margin:0;
+    font-size: small;
+    margin-left: 1rem;
+}
+
+.box #c p {
+    text-align: center;
+    color: #0ead6a;
+    font-size: large;
+}
+
+.box #c {
+    flex: 1;
+}
+

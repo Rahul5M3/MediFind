@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/frontSite/register.css">
+
+</head>
+<body>
+    
+    <div class="register">
+        <div class="a">
+            <div id="user">User</div>
+            <div id="doctor">Doctor</div>
+        </div>
+
+        <div class="registerContent">
+            <form action="/newDoctor" method="post"  enctype="multipart/form-data">
+                
+                <div class="form-floating mb-3">
+                    <input type="text" name="name" class="form-control" id="floatingInput" placeholder="" required>
+                    <label for="floatingInput">Name</label>
+                    <div class="valid-feedback">Title looks good!</div>
+                    <div class="invalid-feedback">Enter title</div> 
+                  </div>
+
+                  <div class="form-floating mb-3">
+                    <input type="text" name="contactNumber" class="form-control" id="floatingInput" placeholder="" required>
+                    <label for="floatingInput">Contact Number</label>
+                  </div>
+
+                  <div class="row mb-4">
+                    <div class="col">
+                        <input type="radio" id="option1" name="option" value="yes" >
+                        <label for="option1">Active</label>
+                    </div>
+                    <div class="col">
+                        <input type="radio" id="option2" name="option" value="no">
+                        <label for="option2">De-Active</label><br>
+                    </div>
+                  </div>
+
+                  <div class="form-floating mb-2">
+                    <input type="text" name="registerNumber" class="form-control" id="floatingInput" placeholder="" required>
+                    <label for="floatingInput">Registeration Number</label>
+                  </div>
+
+                  <div class="form-floating mb-3">
+                    <input type="text" name="location" class="form-control" id="floatingInput" placeholder="" required>
+                    <label for="floatingInput">Location</label>
+                  </div>
+
+                  <div class="row mb-3">
+                    <div class="col">
+                      <label for="Specialisation" class="form-label">Specialisation</label>
+                      <select name="Specialisation" id="Specialisation" required>
+                        <option value="Physician">Physician</option>
+                        <option value="Urology">Urology</option>
+                        <option value="Orthodonotics">Orthodonotics</option>
+                        <option value="Ophthalmology">Ophthalmology</option>
+                        <option value="Paediatrics">Paediatrics</option>
+                      </select>
+                    </div>
+
+                    <div class="col">
+                      <label for="Department" class="form-label">Department</label>
+                      <select name="Department" id="Department" required>
+                        <option value="AYURVEDA">AYURVEDA</option>
+                        <option value="HOMEOPATHIC">HOMEOPATHIC</option>
+                        <option value="ALLOPATHIC">ALLOPATHIC</option>
+                        <option value="TESTIMONIALS">TESTIMONIALS</option>
+                      </select>
+                    </div>
+
+                    <div class="col">
+                      <label for="Department" class="form-label">Price</label>
+                      <input type="number" name="price" required>
+                    </div>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="registerDate" class="form-label">Register Date</label>
+                    <input type="date" name="registerDate" class="form-control" id="registerDate" placeholder="" required>
+                  </div>
+
+                  <div class="row mb-3">
+                    <div class="col">
+                        <label for="activeFrom" class="form-label">Active From</label>
+                        <input type="date" name="activeFrom" class="form-control" id="activeFrom" required>
+                    </div>
+
+                    <div class="col">
+                        <label for="activeTo" class="form-label">Active To</label>
+                        <input type="date" name="activeTo" class="form-control" id="activeTo" required>
+                    </div>
+                  </div>
+                  
+                  <div class="row g-3 mb-3">
+                    <div class="col-md-6">
+                        <label for="inputEmail4" class="form-label">Email</label>
+                        <input name="email"  type="email" class="form-control" id="inputEmail4" required>
+                      </div>
+                      <div class="col-md-6">
+                        <label for="inputPassword4" class="form-label">Password</label>
+                        <input name="password" type="password" class="form-control" id="inputPassword4" required>
+                      </div>
+                  </div>
+
+                  <div>
+                    <input type="file" name="docImage" >
+                  </div>
+
+                  <Button class="registerButton">Register</Button>
+            </form>
+        </div>
+
+        <div class="registerContent2">
+            <form action="/newUser"  method="post">
+                
+                <div class="form-floating mb-4">
+                    <input type="text" name="name" class="form-control" id="floatingInput" placeholder="" required>
+                    <label for="floatingInput">Name</label>
+                  </div>
+
+                  <div class="form-floating mb-4">
+                    <input type="text" name="contactNumber" class="form-control" id="floatingInput" placeholder="" required>
+                    <label for="floatingInput">Contact Number</label>
+                  </div>
+
+                  <div class="row mb-4">
+                    <div class="col">
+                        <input type="radio" id="option1" name="option" value="yes">
+                        <label for="option1">Male</label>
+                    </div>
+                    <div class="col">
+                        <input type="radio" id="option2" name="option" value="no">
+                        <label for="option2">Female</label><br>
+                    </div>
+                  </div>
+
+                  <div class="form-floating mb-4">
+                    <input type="text" name="registerNumber" class="form-control" id="floatingInput" placeholder="">
+                    <label for="floatingInput">Mobile Number</label>
+                  </div>
+
+                  <div class="mb-4">
+                    <label for="dateofbirth" class="form-label">Date Of Birth</label>
+                    <input type="date" name="dob" class="form-control" id="dateofbirth" placeholder="">
+                  </div>
+                  
+                  <div class="row g-3 mb-4">
+                    <div class="col-md-6">
+                        <label  for="inputEmail4" class="form-label">Email</label>
+                        <input name="email" type="email" class="form-control" id="inputEmail4" required>
+                      </div>
+                      <div class="col-md-6">
+                        <label for="inputPassword4" class="form-label">Password</label>
+                        <input name="password" type="password" class="form-control" id="inputPassword4" required>
+                      </div>
+                  </div>
+
+                  <Button class="registerButton">Register</Button>
+            </form>
+        </div>
+
+        <div class="lastPart">
+            <p>Already have an account ?</p>
+            <a href="" style="text-decoration: none; color: #dac218;"><p>LOGIN</p></a>
+        </div>
+    </div>
+
+    <script src="js/register.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

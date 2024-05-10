@@ -1,0 +1,264 @@
+body {
+    overflow-x: hidden;
+    background: #f0f8ff;
+    height: 280vh;
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    height: 128px;
+    width: 100%;
+    background-color: #59E659;
+    padding: 10px;
+    padding-top: 16px;
+    display: flex;
+}
+
+.header p {
+    color: white;
+    font-size: larger;
+    font-weight: bolder;
+    position: relative;
+    left: 40px;
+}
+
+.header i {
+    font-size: xx-large;
+}
+
+.advertisment {
+    height: 200px;
+    width: 90%;
+    /* background-color: black; */
+    position: absolute;
+    left: 60px;
+    top: 80px;
+    border-radius: 30px;
+}
+
+.advertisment .a {
+    width: 100%;
+    height: 80%;
+    border-radius: 30px;
+    /* background-color: aquamarine; */
+    background-image: url("https://images.unsplash.com/photo-1552733407-5d5c46c3bb3b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHRyYXZlbHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60");
+    background-size: contain;
+}
+
+.advertisment .b {
+    width: 100%;
+    height: 10%;
+    background-color: transparent;
+}
+
+.searchingBox {
+    height: 200px;
+    width: 90%;
+    background-color: transparent;
+    position: relative;
+    left: 60px;
+    top: 190px;
+}
+
+.searchingBox .a {
+    height: 40px;
+    /* background-color: aqua; */
+    display: flex;
+    justify-content: center;
+}
+
+.searchingBox .a div {
+    padding: 6px;
+    text-align: center;
+    background-color: #0ead6a;
+    color: white;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    margin-right: 0.1rem;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.searchingBox .a .aa {
+    width: 86px;
+}
+
+.searchingBox .a .ab {
+    width: 136px;
+}
+
+.searchingBox .b {
+    height: 160px;
+    background-color: white;
+    border-radius: 30px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    padding: 15px;
+}
+
+.searchingBox .b,.b2 p {
+    opacity: 0.7;
+    font-weight: 900;
+}
+
+.searchingBox .b form .colSize {
+    width: 340px;
+    border-radius: 10px;
+    background-color: transparent;
+    padding: 2px;
+    font-size: small;
+}
+
+.searchingBox .b2 {
+    display: none;
+    height: 160px;
+    width: 1141.91px;
+    position: absolute;
+    top: 40px;
+    background-color: white;
+    border-radius: 30px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    padding: 15px;
+}
+
+.searchingBox .b2 form .colSize {
+    width: 340px;
+    border-radius: 10px;
+    background-color: transparent;
+    padding: 2px;
+    font-size: small;
+}
+
+.content {
+    height: 210px;
+    width: 90%;
+    background-color: white;
+    position: relative;
+    left: 60px;
+    top: 250px;
+    padding: 15px;
+    border-radius: 30px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.content p {
+    opacity: 0.7;
+    font-weight: 900;
+}
+
+.content .a {
+    height: 130px;
+    width: 100%;
+    /* background-color: #59E659; */
+    display: flex;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+
+.content .a div {
+    width: 410px;
+    height: 116px;
+    /* background-color: aqua; */
+    margin-right: 1px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.content .a div .aaa {
+    height: 68px;
+    width: 98px;
+    border-radius: 50%;
+    border: 1px solid black;
+}
+
+.content .a div .aaa:hover {
+    border: 1px solid green;
+}
+
+.content .a div .aaa i {
+    font-size: xx-large;
+}
+
+.content2 {
+    height: 260px;
+    width: 90%;
+    background-color: white;
+    position: relative;
+    left: 60px;
+    top: 300px;
+    padding: 15px;
+    border-radius: 30px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.content2 p {
+    opacity: 0.7;
+    font-weight: 900;
+}
+
+.content2 .a {
+    height: 190px;
+    width: 100%;
+    /* background-color: #59E659; */
+    display: flex;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.docInfo {
+    display: flex;
+    flex-direction: column;
+    margin-left: 1rem;
+}
+.docInfo p {
+    font-weight: 400;
+    font-size: small;
+    margin: 0;
+}
+
+.content2 .a div {
+    width: 510px;
+    height: 156px;
+    /* background-color: aqua; */
+    margin-right: 1px;
+    display: flex;
+    /* justify-content: center;
+    align-items: center; */
+    /* margin-top: 1rem; */
+    margin-top: 0.8rem;
+}
+
+.content2 .aa {
+    display: flex;
+    justify-content: space-between;
+}
+
+.content2 .a div .photo {
+    height: 126px;
+    width: 146px;
+    background-color: whitesmoke;
+    border-radius: 20px;
+}
+
+.content3 {
+    top: 350px;
+}
+
+.content4 {
+    top: 400px;
+}
+
+.content5 {
+    top: 450px;
+}
+
+.content6 {
+    top: 500px;
+}
