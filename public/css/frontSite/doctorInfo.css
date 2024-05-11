@@ -1,0 +1,105 @@
+/* body {
+    height: 120vh;
+} */
+
+.docImage {
+    height: 300px;
+    width: 300px;
+    /* background-color: aqua; */
+    margin: 12px 469.4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.docPhoto {
+    height: 295.2px;
+    width: 295.2px;
+    background-color: aquamarine;
+    border-radius: 50%;
+    border: 1px solid black;
+}
+
+.docInfo {
+    height: 140px;
+    width: 96%;
+    /* background-color: burlywood; */
+    margin: 18px 0px;
+    position: relative;
+    left: 20px;
+}
+
+.docInfo div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.docInfo p {
+    margin:0;
+    font-size: small;
+}
+
+.straightLine {
+    height: 1.6px;
+    width: 240px;
+    margin: 8px 499.4px;
+    background-color: gray;
+    opacity: 0.3;
+}
+
+.review {
+    height: 326px;
+    width: 96%;
+    position: relative;
+    left: 20px;
+    margin: 15px 0px 0px;
+    /* background-color: wheat; */
+}
+
+.review .a {
+    display: flex;
+    justify-content: space-between;
+}
+
+.reviewContent {
+    height: 98px;
+    width: 100%;
+    background-color: aqua;
+    padding: 12px 0px;
+}
+
+.review .a .reviewBox {
+    color: #028cb0; 
+    cursor: pointer;
+}
+
+.review .a .reviewBox:hover {
+    font-weight: bold;
+}
+
+.ratingReviewBox {
+    display: none;
+    position: fixed;
+    top: 240px;
+    left: 480px;
+    z-index: 2;
+    height: 232.6px;
+    width: 275px;
+    background-color: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.ratingReviewBox #cross {
+    height: 17px;
+    width: 16px;
+    background-color: #0ead6a;
+    border-radius: 4px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

@@ -54,6 +54,12 @@ const registerSchema=Schema ({
     price:{
         type:Number,
         required:true
+    },
+    startTime:{
+        type: String
+    },
+    endTime: {
+        type: String
     }
 })
 

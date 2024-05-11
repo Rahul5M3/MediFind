@@ -22,6 +22,7 @@ const multer=require('multer');
 const upload = multer({ dest: './public/images/' })
 
 const Register=require('./models/register.js');
+const User=require('./models/user.js');
 
 app.set('view engine','ejs');
 app.engine("ejs",ejsMate)
@@ -65,6 +66,9 @@ app.use(passport.session());
 passport.use(new LocalStrategy(Register.authenticate()));
 passport.serializeUser(Register.serializeUser());
 passport.deserializeUser(Register.deserializeUser());
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 app.use(methodOverride('_method'))
 
@@ -87,6 +91,20 @@ app.get('/register',(req,res)=>{
     res.render("frontSite/register.ejs");
 })
 
+app.get('/login',(req,res)=>{
+    res.render('frontSite/login.ejs');
+})
+
+app.post("/login",async (req,res)=>{
+    let user= await User({username:req.body.name,password:req.body.password,email:req.body.email});
+    if(user!=null){
+        res.redirect("/home");
+    }
+    else {
+        res.redirect('/login');
+    }
+})
+
 //-----------------------------------------------------------
 
 app.post('/newDoctor',upload.single('docImage'),async (req,res)=>{
@@ -103,7 +121,9 @@ app.post('/newDoctor',upload.single('docImage'),async (req,res)=>{
             specialisation:req.body.Specialisation,
             department:req.body.Department,
             location:req.body.location,
-            price:req.body.price
+            price:req.body.price,
+            startTime:req.body.startTime,
+            endTime:req.body.endTime,
         });
 
         if(req.file!=='undefined' && req.file!==undefined){
@@ -118,14 +138,31 @@ app.post('/newDoctor',upload.single('docImage'),async (req,res)=>{
         res.redirect('/home');
 })
 
-app.post('/newUser',(req,res)=>{
-    res.send(req.body.name);
+app.post('/newUser',async (req,res)=>{
+    const newUser=new User({
+        name:req.body.name,
+        contactNumber:req.body.contactNumber,
+        email:req.body.email,
+        username:uuidv4(),
+        gender:req.body.gender,
+        mobile:req.body.mobileNumber,
+        dob:req.body.dob,
+    });
+
+    let newU=await newUser.save();
+    res.redirect('/home');
 })
 
 //-----------------------------------------------------------
 
-app.get('/doctor/:id',(req,res)=>{
-    res.render('frontSite/doctorInfo.ejs');
+app.get('/doctor/:id', async (req,res)=>{
+    let doctor=await Register.find({_id:req.params.id});
+    if(doctor.length!=0){
+        res.render('frontSite/doctorInfo.ejs',{doctor:doctor[0]});
+    }
+    else {
+        res.redirect("/home");
+    }
 })
 
 app.get('/doctor-listing/', async (req,res)=>{

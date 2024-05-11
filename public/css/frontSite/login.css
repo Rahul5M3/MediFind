@@ -1,0 +1,322 @@
+body {
+    display: flex;
+    background-color: #0ead6a;
+    height: 100vh;
+    flex-direction: column;
+}
+
+.container {
+    flex: 1;
+    margin: 0;
+    padding: 0;
+    /* background-color: antiquewhite; */
+    display: flex;
+}
+
+.login-content {
+    height: 45.6rem;
+    width: 32.5rem;
+    /* background-color: blue; */
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    opacity: 0.8;
+    transition: opacity 0.5s ease;
+}
+
+.img-content {
+    height: 45.6rem;
+    width: 50.98rem;
+    /* background-color: black; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img-content #content {
+    border-radius: 40px;
+    height: 500px;
+    width: 500px;
+    background: linear-gradient(135deg, rgb(49, 48, 77) 0%, rgb(182, 187, 196) 100%) 0px 0px / 500px 500px;
+    display: flex;
+    flex-direction: column;
+    animation: bounce 0.5s; 
+    animation-direction: alternate; 
+    animation-timing-function: cubic-bezier(.5, 0.05, 1, .5); 
+    animation-iteration-count: 6;
+}
+
+@keyframes bounce { 
+    from { 
+        transform: translate3d(0, 0, 0); 
+    } 
+    to { 
+        transform: translate3d(0, 100px, 0); 
+    } 
+} 
+
+
+
+.img-content #content #img {
+    flex:2;
+}
+
+.img-content #content #img img {
+    height: 350px;
+    width: 500px;
+    border-top-left-radius: 40px;
+    border-top-right-radius:  40px;
+}
+
+.img-content #content #content-2 {
+    flex: 1;
+    padding: 2rem;
+    color: white;
+    font-weight: 600;
+    font-size: larger;
+}
+
+.heading {
+    height: 5rem;
+    width: 28.5rem;
+    display: flex;
+    margin-bottom: 2rem;
+}
+
+.heading .logo-img {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: xx-large;
+}
+.heading .logo-img i {
+    font-weight: 700;
+}
+
+.heading .head {
+    flex: 2;
+    padding: 1rem;
+    padding-left: 0;
+    color: white;
+    font-weight: bolder;
+    font-size: xx-large;
+}
+
+.heading-content {
+    height: 7rem;
+    width: 28.5rem;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    align-items: center;
+}
+
+.heading-content div {
+    flex: 1;
+    padding: 0.5rem;
+}
+
+.heading-content h4 {
+    font-weight: 700;
+}
+
+.form-content {
+    height: 15rem;
+    width: 28.5rem;
+    display: flex;
+    justify-content: center;
+}
+
+.form-content .usernameFancy {
+    --offset:0.1875rem;
+    position: relative;
+    background-color: rgb(22, 26, 48);
+    border-radius: 20px;
+    height: 50px;
+    width: 360px;
+    /* max-width: 100%; */
+    overflow: hidden;
+    margin-bottom: 1rem;
+}
+
+.form-content .usernameFancy::before {
+    content:"";
+    background:conic-gradient(transparent 270deg, orange,transparent);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    aspect-ratio:1;
+    width: 100%;
+    animation: rotate  2s linear infinite;
+}
+
+.form-content .usernameFancy::after {
+    content: '';
+    background: inherit;
+    border-radius: inherit;
+    position: absolute;
+    inset: var(--offset);
+    height: (100%-2*var(--offset));
+    width: calc(100%-2*var(--offset));
+}
+
+@keyframes rotate {
+    from {
+        transform: translate(-50%,-50%) scale(1.4) rotate(0turn);
+    }
+
+    to {
+        transform: translate(-50%,-50%) scale(1.4) rotate(1turn);
+    }
+}
+
+.form-content .usernameFancy input {
+    background: transparent;
+     border: 0;
+    color: white;
+    font-size: 1rem;
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    padding:6px;
+    padding-left: 16px;
+}
+
+
+.Buttons {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    height: 8rem;
+    width: 28.5rem;
+    display: flex;
+    flex-direction: column;
+    padding-left: 1.6rem;
+}
+
+.signup-content {
+    height: 4rem;
+    width: 28.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.signup-content p {
+    color: white;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+.button-86 {
+  all: unset;
+  width: 360px;
+  height: 30px;
+  font-size: 16px;
+  background: transparent;
+  border: none;
+  position: relative;
+  color: #f0f0f0;
+  cursor: pointer;
+  z-index: 1;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-86::after,
+.button-86::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: -99999;
+  transition: all .4s;
+}
+
+.button-86::before {
+  transform: translate(0%, 0%);
+  width: 100%;
+  height: 100%;
+  background: #28282d;
+  border-radius: 10px;
+}
+
+.button-86::after {
+  transform: translate(10px, 10px);
+  width: 35px;
+  height: 35px;
+  background: #ffffff15;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border-radius: 50px;
+}
+
+.button-86:hover::before {
+  transform: translate(5%, 20%);
+  width: 110%;
+  height: 110%;
+}
+
+.button-86:hover::after {
+  border-radius: 10px;
+  transform: translate(0, 0);
+  width: 100%;
+  height: 100%;
+}
+
+.button-86:active::after {
+  transition: 0s;
+  transform: translate(0, 5%);
+}
+
+/* --------------------------------------------------------------------------------------------------- */
+@media screen and (max-width: 1007px){
+    .container {
+        flex: 1;
+        margin: 0;
+        padding: 0;
+        /* background-color: antiquewhite; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .img-content {
+        display: none;
+    }
+
+    .login-content {
+        height: 42rem
+    }
+}
+
+@media screen and (max-width: 426px){
+    .login-content {
+        height: 42rem;
+        width: 30rem;
+    }
+}
+
+@media screen and (max-width: 376px){
+    .login-content {
+        height: 42rem;
+        width: 28rem;
+    }
+}
+
+@media screen and (max-width: 321px){
+    .login-content {
+        height: 42rem;
+        width: 25rem;
+    }
+}

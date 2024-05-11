@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr.<%=doctor.name%></title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/frontSite/doctorInfo.css">
+    <link rel="stylesheet" href="/css/frontSite/footer.css">
+</head>
+<body>
+    <div class="docImage" id="selectingAll">
+        <div class="docPhoto">
+            <img src="" alt="doctor image">
+        </div>
+    </div>
+
+    <div class="docInfo" id="selectingAll">
+        <div>
+            <p id="name" style="font-weight: bold; font-size: large;">Dr.<%=doctor.name%></p>
+            <p style="font-weight: bold; font-size: large; color: #0ead6a;">$<%=doctor.price%></p>
+        </div>
+        <p> <b> Contact </b> : <%=doctor.contactNumber%></p>
+        <p> <b> Department </b> : <%=doctor.department%></p>
+        <p><b> Medical Field </b> : <%=doctor.specialisation%></p>
+        <p><b> Available </b> : <%=doctor.active%></p>
+        <p><b> Visit TIme </b> : <%=doctor.startTime%> - <%=doctor.endTime%> </p>
+        <p><b> Location </b> : <%=doctor.location%></p>
+    </div>
+
+    <div class="straightLine"></div>
+
+    <div class="review" id="selectingAll">
+        <div class="a">
+            <p style="color: #0ead6a; font-weight: bold;">Ratings and Reviews</p>
+            <p class="reviewBox">Write a Review >></p>
+        </div>
+        <!-- //----------------------------------------------------------------------------------review content here code  -->
+        <div class="reviewContent"></div> 
+    </div>
+
+    <div class="ratingReviewBox">
+        <h6>Ratings And Reviews</h6>
+        <div id="cross"><i class="fa-solid fa-xmark" style="color: #ffffff;"></i></div>
+        <form action="#" method="post">
+            <label for="rating" style="opacity: 0.6;">RATING</label>
+            <select class="form-select form-select-sm" name="rating" id="rating" aria-label="Small select example">
+                <option selected>Select Rating</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="3">4</option>
+                <option value="3">5</option>
+              </select>
+              <div class="mt-2">
+                <label for="formGroupExampleInput" class="form-label" style="opacity: 0.6;">REVIEW</label>
+                <input type="text" name="review" class="form-control" id="formGroupExampleInput" placeholder="Enter Your Review">
+              </div>  
+              <button class="mt-3" style="background-color: #0ead6a; color: white; border: 1px solid black; width: 100%; border-radius: 20px;">POST</button>
+        </form>
+    </div>
+
+    <%- include('../includes/footer.ejs') %>
+
+    <script src="/js/doctorInfo.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

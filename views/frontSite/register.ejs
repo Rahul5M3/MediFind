@@ -84,14 +84,25 @@
                       <label for="Department" class="form-label">Price</label>
                       <input type="number" name="price" required>
                     </div>
+
+                    <div class="col mt-4">
+                      <label for="Department" class="form-label">Start Timing</label>
+                      <input type="time" name="startTime" required>
+                    </div>
+
+                    <div class="col mt-4">
+                      <label for="Department" class="form-label">End Timing</label>
+                      <input type="time" name="endTime" required>
+                    </div>
+
                   </div>
 
-                  <div class="mb-3">
+                  <div class="mb-2">
                     <label for="registerDate" class="form-label">Register Date</label>
                     <input type="date" name="registerDate" class="form-control" id="registerDate" placeholder="" required>
                   </div>
 
-                  <div class="row mb-3">
+                  <div class="row mb-2">
                     <div class="col">
                         <label for="activeFrom" class="form-label">Active From</label>
                         <input type="date" name="activeFrom" class="form-control" id="activeFrom" required>
@@ -137,17 +148,17 @@
 
                   <div class="row mb-4">
                     <div class="col">
-                        <input type="radio" id="option1" name="option" value="yes">
+                        <input type="radio" id="option1" name="gender" value="yes">
                         <label for="option1">Male</label>
                     </div>
                     <div class="col">
-                        <input type="radio" id="option2" name="option" value="no">
+                        <input type="radio" id="option2" name="gender" value="no">
                         <label for="option2">Female</label><br>
                     </div>
                   </div>
 
                   <div class="form-floating mb-4">
-                    <input type="text" name="registerNumber" class="form-control" id="floatingInput" placeholder="">
+                    <input type="text" name="mobileNumber" class="form-control" id="floatingInput" placeholder="">
                     <label for="floatingInput">Mobile Number</label>
                   </div>
 
@@ -173,7 +184,7 @@
 
         <div class="lastPart">
             <p>Already have an account ?</p>
-            <a href="" style="text-decoration: none; color: #dac218;"><p>LOGIN</p></a>
+            <a href="/login" style="text-decoration: none; color: #dac218;"><p>LOGIN</p></a>
         </div>
     </div>
 
