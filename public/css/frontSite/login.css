@@ -142,7 +142,7 @@ body {
 
 .form-content .usernameFancy::before {
     content:"";
-    background:conic-gradient(transparent 270deg, orange,transparent);
+    background:conic-gradient(transparent 270deg, rgb(2, 68, 2),transparent);
     position: absolute;
     top: 50%;
     left: 50%;
