@@ -165,9 +165,15 @@ app.get('/doctor/:id', async (req,res)=>{
     }
 })
 
-app.get('/doctor-listing/', async (req,res)=>{
+app.get('/doctor-listing', async (req,res)=>{
     let title=req.query.department;
-    let data=await Register.find({specialisation:title});
+    // let data=await Register.find({specialisation:title});
+    let data=await Register.find({
+        $or: [
+                {specialisation:title} ,
+                {department:title}
+        ]
+    });
     res.render('frontSite/doctor-listing.ejs',{title,data});
 })
 

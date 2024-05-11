@@ -56,10 +56,16 @@ const registerSchema=Schema ({
         required:true
     },
     startTime:{
-        type: String
+        type: String,
+        required:true,
     },
     endTime: {
-        type: String
+        type: String,
+        required:true,
+    },
+    shouldMakeVisible:{
+        type:String,
+        default: "no",
     }
 })
 
