@@ -16,7 +16,7 @@
 <body>
     <div class="docImage" id="selectingAll">
         <div class="docPhoto">
-            <img src="" alt="doctor image">
+            <img src="/images/<%=doctor.photo.url%>" alt="doctor image">
         </div>
     </div>
 
@@ -41,21 +41,33 @@
             <p class="reviewBox">Write a Review >></p>
         </div>
         <!-- //----------------------------------------------------------------------------------review content here code  -->
-        <div class="reviewContent"></div> 
+        
+        <% if(review.length>0){ %>
+        <% for(let rev=0; rev<review.length; rev++){ %>
+        <div class="reviewContent">
+            <div class="a">
+                <div style="font-weight: bold;"><%=review[rev].user.name%></div>
+                <div style="color: #ffba00;">Rating : <%=review[rev].rating%>/5</div>
+            </div>
+            <p style="margin: 0; font-size: small; margin-top: 10px;"><%=review[rev].review%></p>
+        </div> 
+        <% } %>
+        <% } %>
+        
     </div>
 
     <div class="ratingReviewBox">
         <h6>Ratings And Reviews</h6>
         <div id="cross"><i class="fa-solid fa-xmark" style="color: #ffffff;"></i></div>
-        <form action="#" method="post">
+        <form action="/review/<%=doctor._id%>" method="post">
             <label for="rating" style="opacity: 0.6;">RATING</label>
             <select class="form-select form-select-sm" name="rating" id="rating" aria-label="Small select example">
                 <option selected>Select Rating</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
-                <option value="3">4</option>
-                <option value="3">5</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
               </select>
               <div class="mt-2">
                 <label for="formGroupExampleInput" class="form-label" style="opacity: 0.6;">REVIEW</label>

@@ -64,8 +64,15 @@
 .reviewContent {
     height: 98px;
     width: 100%;
-    background-color: aqua;
+    /* background-color: aqua; */
     padding: 12px 0px;
+}
+
+.reviewContent .a {
+    height: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
 }
 
 .review .a .reviewBox {
