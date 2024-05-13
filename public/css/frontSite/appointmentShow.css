@@ -1,0 +1,80 @@
+body {
+    background-color: aliceblue;
+}
+
+.showAppointment {
+    height: 365px;
+    /* background-color: aliceblue; */
+    padding: 56px 15px 15px;
+}
+
+.inside {
+    height: 287px;
+    background-color: white;
+    padding: 15px;
+    margin: 0px 0px 7px;
+    border-radius: 20px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.inside>p {
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: large;
+}
+
+.info {
+    height: 145px;
+    margin: 20px 0px 0px;
+    padding: 15px 0px 0px;
+    background-color: #f5f5f5;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    border: 1px solid rgba(128, 128, 128, 0.5);
+}
+
+.info .a {
+    flex: 1;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.5);
+    text-align: center;
+}
+
+.info .b {
+    flex: 1;
+    display: flex;
+    text-align: center;
+}
+
+.info .b #a {
+    border-right: 1px solid rgba(128, 128, 128, 0.5);
+}
+
+.info .b div {
+    flex: 1;
+    padding: 14px;
+}
+
+.info p {
+    margin: 0;
+}
+
+.feeInfo {
+    height: 26px;
+    margin: 24px 0px 0px;
+    text-align: center;
+    font-size: large;
+}
+
+button {
+    height: 60px;
+    width: 98%;
+    border: 0;
+    background-color: #0ead6a;
+    position: fixed;
+    bottom: 6px;
+    font-size: larger;
+    color: white;
+    border-radius: 30px;
+    cursor: pointer;
+}

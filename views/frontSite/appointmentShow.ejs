@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Details</title>
+
+    <link rel="stylesheet" href="/css/frontSite/appointmentShow.css">
+</head>
+<body>
+
+    <div class="showAppointment">
+        <div class="inside">
+            <p class="docName">Dr.<%=doctor[0].name%></p>
+            <div class="info">
+                <div class="a">
+                    <p style="opacity: 0.6; margin-bottom: 4px;">Medical Purpose</p>
+                    <p><%=newAppoint.disease%></p>
+                </div>
+                <div class="b">
+                    <div id="a">
+                        <p style="opacity: 0.6; margin-bottom: 4px;">Date</p>
+                        <p><%=newAppoint.date%></p>
+                    </div>
+                    <div>
+                        <p style="opacity: 0.6; margin-bottom: 4px;">Time</p>
+                        <p><%=newAppoint.time%></p>
+                    </div>
+                </div>
+            </div>
+            <div class="feeInfo">
+                <b>Fee</b> : <span style="color: #0ead6a;">$<%=doctor[0].price%></span>
+            </div>
+        </div>
+    </div>
+
+    <a href="/doctor/<%=doctor[0]._id%>">
+        <button>Done</button>
+    </a>
+
+    <script src="/js/appointmentShow.js"></script>
+</body>
+</html>

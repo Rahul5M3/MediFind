@@ -14,6 +14,9 @@
     <link rel="stylesheet" href="/css/frontSite/footer.css">
 </head>
 <body>
+
+    <div class="appointment"><a href="/appointment/<%=doctor._id%>">Book an Appointment</a></div>
+
     <div class="docImage" id="selectingAll">
         <div class="docPhoto">
             <img src="/images/<%=doctor.photo.url%>" alt="doctor image">
@@ -42,17 +45,22 @@
         </div>
         <!-- //----------------------------------------------------------------------------------review content here code  -->
         
-        <% if(review.length>0){ %>
-        <% for(let rev=0; rev<review.length; rev++){ %>
+        <% if(review!=null){ %>
+        <% for(let rev=0; rev<review.reviewRating.length; rev++){ %>
         <div class="reviewContent">
             <div class="a">
-                <div style="font-weight: bold;"><%=review[rev].user.name%></div>
-                <div style="color: #ffba00;">Rating : <%=review[rev].rating%>/5</div>
+                <div style="font-weight: bold;"><%=review.reviewRating[rev].user.name%></div>
+                <div style="color: #ffba00;">Rating : <%=review.reviewRating[rev].rating%>/5</div>
             </div>
-            <p style="margin: 0; font-size: small; margin-top: 10px;"><%=review[rev].review%></p>
+            <p style="margin: 0; font-size: small; margin-top: 10px;"><%=review.reviewRating[rev].review%></p>
         </div> 
         <% } %>
+        <% }else { %>
+            <div class="a" style="display: flex; justify-content: center; align-items: center;">
+                <h5>No reviews till yet</h5>
+            </div>
         <% } %>
+      
         
     </div>
 
@@ -75,6 +83,50 @@
               </div>  
               <button class="mt-3" style="background-color: #0ead6a; color: white; border: 1px solid black; width: 100%; border-radius: 20px;">POST</button>
         </form>
+    </div>
+
+    <div class="straightLine"></div>
+
+    <div class="review " id="selectingAll">
+        <div class="a">
+            <p style="color: #0ead6a; font-weight: bold;">Appointments</p>
+            <!-- <p class="reviewBox">Write a Review >></p> -->
+        </div>
+        <!-- //----------------------------------------------------------------------------------review content here code  -->
+        
+        <% if(appointment!=null){ %>
+            <% for(let i=0; i<appointment.appointmentDetail.length; i++){ %>
+                <% if(appointment.appointmentDetail[i].date==todayDate){ %>
+        <div class="reviewContent ">
+            <div class="a">
+                <div style="font-weight: bold;"><%=appointment.appointmentDetail[i].user.name%></div>
+                <div style="color: black;">
+                    <% 
+                        const timeString = appointment.appointmentDetail[i].time;
+                        const period = getTimePeriod(timeString);
+                        function getTimePeriod(timeString) {
+                            const [hours] = timeString.split(':');
+                            const hoursNumber = parseInt(hours);
+                            const period = (hoursNumber >= 12) ? 'PM' : 'AM';
+                            return period;
+                        }
+                    %>
+                    <% if (period === 'PM') { %>
+                        Time : <%=appointment.appointmentDetail[i].time%> PM
+                    <% } else { %>
+                        Time :<%=appointment.appointmentDetail[i].time%> AM
+                    <% } %>
+                    
+                </div>
+            </div>
+            <p style="margin: 0; font-size: small; margin-top: 10px;">Gender : <%=appointment.appointmentDetail[i].user.gender%></p>
+        </div> 
+        <% } %>
+        <% } %>
+        <% } %>
+     
+      
+        
     </div>
 
     <%- include('../includes/footer.ejs') %>

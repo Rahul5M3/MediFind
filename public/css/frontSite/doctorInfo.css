@@ -1,6 +1,28 @@
-/* body {
-    height: 120vh;
-} */
+body {
+    height: 220vh;
+}
+
+.appointment {
+    height: 26px;
+    width: 180px;
+    background-color: #0ead6a;
+    border-radius: 20px;
+    padding: 0px 18px;
+    position: fixed;
+    right: 10px;
+    top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.appointment a {
+    text-decoration: none;
+    color: white;
+    font-size: small;
+}
 
 .docImage {
     height: 300px;

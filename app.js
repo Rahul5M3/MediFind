@@ -24,6 +24,7 @@ const upload = multer({ dest: './public/images/' })
 const Register=require('./models/register.js');
 const User=require('./models/user.js');
 const Review=require('./models/review.js');
+const Appointment=require('./models/appointment.js');
 const {isLoggedIn,saveRedirectUrl,checkUserInfo}=require('./middleware.js');
 
 app.set('view engine','ejs');
@@ -178,11 +179,22 @@ app.get('/doctor/:id', isLoggedIn, async (req,res)=>{
     let review=await Review.find({doctor:req.params.id}).populate({
         path: 'reviewRating.user',
         model: 'User'
-      });
-    // console.log(review[0].reviewRating);
+    });
+
+    let appointments=await Appointment.find({doctor:req.params.id}).populate({
+        path:'appointmentDetail.user',
+        model:'User'
+    });
+
     let doctor=await Register.find({_id:req.params.id});
     if(doctor.length!=0){
-        res.render('frontSite/doctorInfo.ejs',{doctor:doctor[0],review:review[0].reviewRating});
+        // if(review[0]!=null){
+        //     console.log(review[0]);
+        // }else {
+        //     console.log("working");
+        // }
+        const todayDate = new Date().toISOString().split('T')[0]; 
+        res.render('frontSite/doctorInfo.ejs',{doctor:doctor[0],review:review[0],appointment:appointments[0], todayDate});
     }
     else {
         res.redirect("/home");
@@ -220,6 +232,32 @@ app.post('/review/:id',async (req,res)=>{
     newReview.reviewRating.push({review:req.body.review, rating:req.body.rating , user:req.user.id, date:date});
     await newReview.save();
     res.redirect(`/doctor/${req.params.id}`);
+})
+
+//-----------------------------------------------------------
+
+app.get('/appointment/:id', isLoggedIn, async (req,res)=>{
+    let doctor=await Register.find({_id:req.params.id});
+    if(!doctor){
+       res.redirect('/home');
+    }else {
+        res.render("frontSite/appointment.ejs",{doctor});
+    }
+})
+
+app.post('/appointment/:id', async (req,res)=>{
+    let newAppoint=await Appointment.findOne({doctor:req.params.id});
+    if(!newAppoint){
+        newAppoint=new Appointment({doctor:req.params.id, appointmentDetail:[]});
+    }
+    newAppoint.appointmentDetail.push({date:req.body.date, time:req.body.time, disease:req.body.disease, user:req.user.id});
+    await newAppoint.save();
+    
+    let doctor=await Register.find({_id:req.params.id});
+ 
+    let n=newAppoint.appointmentDetail.length;
+
+    res.render('frontSite/appointmentShow.ejs',{doctor,newAppoint:newAppoint.appointmentDetail[n-1]});
 })
 
 //-----------------------------------------------------------
