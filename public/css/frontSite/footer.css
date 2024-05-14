@@ -8,6 +8,10 @@
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
+#footer {
+    width: 200px;
+}
+
 .footer div {
     height: 100%;
     width: 317.1875px;

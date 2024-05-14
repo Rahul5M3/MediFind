@@ -20,6 +20,10 @@ const appointmentSchema=new Schema({
             ref:'User'
         },
         disease:String,
+        checked:{
+            type:String,
+            default:'no'
+        }
     }],
 })
 

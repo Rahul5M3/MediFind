@@ -17,6 +17,7 @@
 
     <div class="appointment"><a href="/appointment/<%=doctor._id%>">Book an Appointment</a></div>
 
+
     <div class="docImage" id="selectingAll">
         <div class="docPhoto">
             <img src="/images/<%=doctor.photo.url%>" alt="doctor image">
@@ -96,7 +97,7 @@
         
         <% if(appointment!=null){ %>
             <% for(let i=0; i<appointment.appointmentDetail.length; i++){ %>
-                <% if(appointment.appointmentDetail[i].date==todayDate){ %>
+                <% if(appointment.appointmentDetail[i].date==todayDate && appointment.appointmentDetail[i].checked=='no'){ %>
         <div class="reviewContent ">
             <div class="a">
                 <div style="font-weight: bold;"><%=appointment.appointmentDetail[i].user.name%></div>

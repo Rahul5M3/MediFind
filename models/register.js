@@ -66,10 +66,19 @@ const registerSchema=Schema ({
     shouldMakeVisible:{
         type:String,
         default: "no",
+    },
+    username: {
+        type:String,
+        required:true,
+        unique:true
+    },
+    password: {
+        type:String,
+        required:true
     }
 })
 
-registerSchema.plugin(passportLocalMongoose);
+// registerSchema.plugin(passportLocalMongoose);
 
 const Register=mongoose.model('Register',registerSchema);
 

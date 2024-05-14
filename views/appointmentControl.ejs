@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointments</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/appointmentControl.css">
+    <link rel="stylesheet" href="/css/frontSite/footer.css">
+</head>
+<body>
+
+    <div class="navbar">Dr.<%=appointments.doctor.name%> Appointments</div>
+
+<% for(let i=0; i<appointments.appointmentDetail.length; i++){ %>
+    <% if(appointments.appointmentDetail[i].checked=='no'){ %>
+    <div class="appointment_box">
+        <div class="checkBox">
+           <a href="/deleteAppointment/<%=appointments.appointmentDetail[i].user._id%>/<%=appointments._id%>"> <i class="fa-solid fa-trash" style="color: #ff0000;"></i></a>
+        </div>
+        <div class="aaa">
+            <p> <b>Name</b> : <%=appointments.appointmentDetail[i].user.name%> </p>
+            <p> <b>Contact Number</b> : <%=appointments.appointmentDetail[i].user.contactNumber%> </p>
+            <p> <b>Time</b> : <%=appointments.appointmentDetail[i].time%> </p>
+            <p><b>Disease</b> : <%=appointments.appointmentDetail[i].disease%> </p>
+        </div>
+    </div>
+<% } %>
+<% } %>  
+
+<div class="footer" id="footer">
+    <div>
+        <a href="/home" class="link">
+            <div class="a"><i class="fa-solid fa-house"></i></div>
+            <div class="b">Home</div>
+        </a>
+    </div>
+</div>
+
+</body>
+</html>

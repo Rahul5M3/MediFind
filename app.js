@@ -9,6 +9,9 @@ const ejs=require('ejs');
 const ejsMate=require('ejs-mate');
 const mongoose=require('mongoose');
 const cookieParser=require("cookie-parser");
+const crypto = require('crypto');
+const bcrypt = require('bcrypt');
+
 
 const { v4: uuidv4 } = require('uuid');
 
@@ -99,15 +102,36 @@ app.get('/login',(req,res)=>{
     res.render('frontSite/login.ejs');
 })
 
-// app.post("/login", async (req,res)=>{
-//     let user= await User({username:req.body.name,password:req.body.password,email:req.body.email});
-//     if(user!=null){
-//         res.redirect("/home");
-//     }
-//     else {
-//         res.redirect('/login');
-//     }
-// })
+app.get('/doctor/login',(req,res)=>{
+    res.render('frontSite/doctorLogin.ejs');
+})
+
+app.post('/doctor/login',async (req,res)=>{
+
+    try {
+        let doctor=await Register.find({username:req.body.username});
+
+        const password = req.body.password;
+
+        const storedHash = doctor[0].password; 
+
+        bcrypt.compare(password, storedHash, function(err, result) {
+            if (err) {
+                res.redirect("/doctor/login");
+            } else {
+                if (result) {
+                    res.redirect(`/medifind/${doctor[0]._id}`);
+                } else {
+                    res.redirect("/doctor/login");
+                }
+            }
+        });
+    }catch(e){
+        res.redirect('/doctor/login');
+    }
+
+})
+
 
     app.post('/login', saveRedirectUrl, passport.authenticate('local',{failureRedirect:'/login', failureFlash:true}), async (req,res)=>{
         let redirectUrl=res.locals.redirectUrl || '/home';
@@ -117,6 +141,7 @@ app.get('/login',(req,res)=>{
 //-----------------------------------------------------------
 
 app.post('/newDoctor',upload.single('docImage'),async (req,res)=>{
+
         const newDoc=new Register({
             name:req.body.name,
             contactNumber:req.body.contactNumber,
@@ -142,7 +167,13 @@ app.post('/newDoctor',upload.single('docImage'),async (req,res)=>{
             }
         }
 
-        let newDoctor=await Register.register(newDoc,req.body.password);
+        const password = req.body.password;
+        const salt = await bcrypt.genSalt(10);
+        const hash = await bcrypt.hash(password, salt);
+
+        newDoc.password = hash;
+
+        let newDoctor=await newDoc.save();
 
         res.redirect('/home');
 })
@@ -188,17 +219,13 @@ app.get('/doctor/:id', isLoggedIn, async (req,res)=>{
 
     let doctor=await Register.find({_id:req.params.id});
     if(doctor.length!=0){
-        // if(review[0]!=null){
-        //     console.log(review[0]);
-        // }else {
-        //     console.log("working");
-        // }
         const todayDate = new Date().toISOString().split('T')[0]; 
         res.render('frontSite/doctorInfo.ejs',{doctor:doctor[0],review:review[0],appointment:appointments[0], todayDate});
     }
     else {
         res.redirect("/home");
     }
+
 })
 
 app.get('/doctor-listing', isLoggedIn,  async (req,res)=>{
@@ -246,7 +273,28 @@ app.get('/appointment/:id', isLoggedIn, async (req,res)=>{
 })
 
 app.post('/appointment/:id', async (req,res)=>{
+
+    let appointments=await Appointment.find({
+        doctor:req.params.id,
+        'appointmentDetail.date':req.body.date,
+        'appointmentDetail.user':req.user.id
+    });
+    if(appointments.length>0){
+        return res.redirect(`/doctor/${req.params.id}`);
+    }
+
+    const todayDate = new Date().toISOString().split('T')[0];
+    let appointment=await Appointment.find({
+        doctor: req.params.id,
+        'appointmentDetail.time': req.body.time,
+        'appointmentDetail.date': todayDate,
+    });
+    if(appointment.length>6){
+        return res.redirect(`/doctor/${req.params.id}`);
+    }
+
     let newAppoint=await Appointment.findOne({doctor:req.params.id});
+
     if(!newAppoint){
         newAppoint=new Appointment({doctor:req.params.id, appointmentDetail:[]});
     }
@@ -261,6 +309,30 @@ app.post('/appointment/:id', async (req,res)=>{
 })
 
 //-----------------------------------------------------------
+
+app.get('/medifind/:id',async (req,res)=>{
+    // console.log(req.params.id);
+    let appointments=await Appointment.findOne({doctor:req.params.id}).populate({
+        path:'appointmentDetail.user',
+        model:'User'
+    }).populate('doctor');
+    // console.log(appointments.appointmentDetail);
+    res.render('appointmentControl.ejs',{appointments});
+})
+
+app.get('/deleteAppointment/:userId/:appointId',async (req,res)=>{
+    let appointment=await Appointment.updateOne(
+        {_id:req.params.appointId,'appointmentDetail.user':req.params.userId,},
+        {$set:{'appointmentDetail.$[elem].checked':'yes',}},
+        { arrayFilters: [{ 'elem.user': req.params.userId }] }
+    );
+    let appointments=await Appointment.find({_id:req.params.appointId});
+    // console.log(appointments);
+    res.redirect(`/medifind/${appointments[0].doctor}`);
+})
+
+//-----------------------------------------------------------
+
 
 app.all('*',(req,res)=>{
     res.redirect('/home');
