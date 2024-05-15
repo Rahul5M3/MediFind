@@ -171,10 +171,11 @@
         <div class="a">
 
             <% for(let i=data.length-1; i>=0; i--){ %>
-                <% if(data[i].department=='AYURVEDA') { %>
+
+                <% if(data[i].department=='AYURVEDA' ) { %>
 
             <div>
-                <div class="photo"><img src="" alt="doctor image"></div>
+                <div class="photo"><img src="<%=data[i].photo.url%>" alt="doctor image"></div>
                 <div class="docInfo">
                     <a href="/doctor/<%=data[i]._id%>"><p style="font-weight: bold;">Dr.<%=data[i].name%></p></a>
                     <p><%=data[i].specialisation%></p>
@@ -205,7 +206,7 @@
                 <% if(data[i].department=='HOMEOPATHIC') { %>
 
             <div>
-                <div class="photo"><img src="" alt="doctor image"></div>
+                <div class="photo"><img src="<%=data[i].photo.url%>" alt="doctor image"></div>
                 <div class="docInfo">
                     <a href="/doctor/<%=data[i]._id%>"><p style="font-weight: bold;">Dr.<%=data[i].name%></p></a>
                     <p><%=data[i].specialisation%></p>
@@ -235,7 +236,7 @@
                 <% if(data[i].department=='ALLOPATHIC') { %>
 
             <div>
-                <div class="photo"><img src="" alt="doctor image"></div>
+                <div class="photo"><img src="<%=data[i].photo.url%>" alt="doctor image"></div>
                 <div class="docInfo">
                     <a href="/doctor/<%=data[i]._id%>"><p style="font-weight: bold;">Dr.<%=data[i].name%></p></a>
                     <p><%=data[i].specialisation%></p>
@@ -265,7 +266,7 @@
                 <% if(data[i].department=='TESTIMONIALS') { %>
 
             <div>
-                <div class="photo"><img src="" alt="doctor image"></div>
+                <div class="photo"><img src="<%=data[i].photo.url%>" alt="doctor image"></div>
                 <div class="docInfo">
                     <a href="/doctor/<%=data[i]._id%>"><p style="font-weight: bold;">Dr.<%=data[i].name%></p></a>
                     <p><%=data[i].specialisation%></p>

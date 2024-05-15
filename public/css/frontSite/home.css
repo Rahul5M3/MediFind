@@ -247,6 +247,12 @@ body {
     border-radius: 20px;
 }
 
+.content2 .a div .photo img {
+    height: inherit;
+    width: inherit;
+    border-radius: inherit;
+}
+
 .content3 {
     top: 350px;
 }

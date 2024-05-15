@@ -20,7 +20,7 @@
 
     <div class="docImage" id="selectingAll">
         <div class="docPhoto">
-            <img src="/images/<%=doctor.photo.url%>" alt="doctor image">
+            <img src="<%=doctor.photo.url%>" alt="doctor image">
         </div>
     </div>
 
@@ -47,7 +47,9 @@
         <!-- //----------------------------------------------------------------------------------review content here code  -->
         
         <% if(review!=null){ %>
-        <% for(let rev=0; rev<review.reviewRating.length; rev++){ %>
+            <% let count=0; %>
+        <% for(let rev=review.reviewRating.length-1; rev>=0; rev--){ %>
+            <% count++; if(count<4){ %>
         <div class="reviewContent">
             <div class="a">
                 <div style="font-weight: bold;"><%=review.reviewRating[rev].user.name%></div>
@@ -55,6 +57,7 @@
             </div>
             <p style="margin: 0; font-size: small; margin-top: 10px;"><%=review.reviewRating[rev].review%></p>
         </div> 
+        <% } %>
         <% } %>
         <% }else { %>
             <div class="a" style="display: flex; justify-content: center; align-items: center;">

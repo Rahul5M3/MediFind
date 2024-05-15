@@ -11,7 +11,7 @@ const mongoose=require('mongoose');
 const cookieParser=require("cookie-parser");
 const crypto = require('crypto');
 const bcrypt = require('bcrypt');
-
+const MongoStore=require('connect-mongo');
 
 const { v4: uuidv4 } = require('uuid');
 
@@ -22,7 +22,8 @@ const LocalStrategy=require('passport-local');
 const methodOverride=require('method-override');
 const multer=require('multer');
 
-const upload = multer({ dest: './public/images/' })
+const {storage}=require('./cloudConfig.js');
+const upload = multer({ storage });
 
 const Register=require('./models/register.js');
 const User=require('./models/user.js');
@@ -52,8 +53,21 @@ async function main(){
     mongoose.connect(process.env.DBURL);
 }
 
+const store=MongoStore.create({
+    mongoUrl:process.env.DBURL,
+    crypto: {
+        secret:process.env.SECRET,
+    },
+    touchAfter: 24*3600,
+});
+
+store.on("ERROR",()=>{
+    console.log('Error in mongo session',err);
+});
+
+
 const sessionOption={
-    // store:store,
+    store:store,
     secret:process.env.SECRET,
     resave:false,
     saveUninitialized:true,
@@ -243,7 +257,11 @@ app.get('/doctor-listing', isLoggedIn,  async (req,res)=>{
 //--------------------------------------------------------------
 
 app.post('/review/:id',async (req,res)=>{
-    let newReview=await Review.findOne({doctor: req.params.id});
+    let newReview=await Review.findOne({
+        doctor: req.params.id,
+        'reviewRating.date': new Date(),
+        'reviewRating.user':req.user.id,
+    });
 
     let date=new Date();
     date.toLocaleDateString('en-IN',  { 
@@ -255,6 +273,8 @@ app.post('/review/:id',async (req,res)=>{
 
     if(!newReview){
          newReview=new Review({doctor: req.params.id,reviewRating:[]});
+    }else {
+        return res.redirect(`/doctor/${req.params.id}`);
     }
     newReview.reviewRating.push({review:req.body.review, rating:req.body.rating , user:req.user.id, date:date});
     await newReview.save();

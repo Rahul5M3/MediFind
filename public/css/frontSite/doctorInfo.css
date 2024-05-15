@@ -37,9 +37,16 @@ body {
 .docPhoto {
     height: 295.2px;
     width: 295.2px;
-    background-color: aquamarine;
+    /* background-color: aquamarine; */
     border-radius: 50%;
     border: 1px solid black;
+}
+
+.docPhoto img {
+    height: inherit;
+    width: inherit;
+    border-radius: inherit;
+    /* background-size: cover; */
 }
 
 .docInfo {
