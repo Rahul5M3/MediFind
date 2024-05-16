@@ -98,6 +98,13 @@ app.use(express.json())
 
 //----------------------------------------------------------
 
+app.use((req,res,next)=>{
+    res.locals.success=req.flash('success');
+    res.locals.error=req.flash('error');
+    next();
+})
+
+//---------------------------------------------------------
 
 app.get('/',(req,res)=>{
     res.redirect('/home');
@@ -105,6 +112,7 @@ app.get('/',(req,res)=>{
 
 app.get('/home',async (req,res)=>{
     let data= await Register.find({});
+    req.flash('success','Welcome to MEDIFIND');
     res.render('frontSite/home.ejs',{data});
 })
 
@@ -131,16 +139,20 @@ app.post('/doctor/login',async (req,res)=>{
 
         bcrypt.compare(password, storedHash, function(err, result) {
             if (err) {
+                req.flash('error','Problem occured try again');
                 res.redirect("/doctor/login");
             } else {
                 if (result) {
+                    req.flash('success','LoggedIn successfully');
                     res.redirect(`/medifind/${doctor[0]._id}`);
                 } else {
+                    req.flash('error','Try again');
                     res.redirect("/doctor/login");
                 }
             }
         });
     }catch(e){
+        req.flash('error','Try again');
         res.redirect('/doctor/login');
     }
 
@@ -188,7 +200,7 @@ app.post('/newDoctor',upload.single('docImage'),async (req,res)=>{
         newDoc.password = hash;
 
         let newDoctor=await newDoc.save();
-
+        req.flash('success','Register Successfully');
         res.redirect('/home');
 })
 
@@ -209,10 +221,12 @@ app.post('/newUser',async (req,res,next)=>{
             if(err){
                 next(err)
             }
+            req.flash('success','Register Successfully');
             res.redirect('/home');
         });
     }catch(e){
         console.log(e);
+        req.flash('error','Try again');
         res.redirect('/register');
     }
 
@@ -234,6 +248,7 @@ app.get('/doctor/:id', isLoggedIn, async (req,res)=>{
     let doctor=await Register.find({_id:req.params.id});
     if(doctor.length!=0){
         const todayDate = new Date().toISOString().split('T')[0]; 
+        req.flash('success',`Welcome to Dr.${doctor[0].name} Profile`);
         res.render('frontSite/doctorInfo.ejs',{doctor:doctor[0],review:review[0],appointment:appointments[0], todayDate});
     }
     else {
@@ -274,10 +289,12 @@ app.post('/review/:id',async (req,res)=>{
     if(!newReview){
          newReview=new Review({doctor: req.params.id,reviewRating:[]});
     }else {
+        req.flash("error",'No more of review can be added for today');
         return res.redirect(`/doctor/${req.params.id}`);
     }
     newReview.reviewRating.push({review:req.body.review, rating:req.body.rating , user:req.user.id, date:date});
     await newReview.save();
+    req.flash('success','Review added');
     res.redirect(`/doctor/${req.params.id}`);
 })
 
@@ -324,7 +341,7 @@ app.post('/appointment/:id', async (req,res)=>{
     let doctor=await Register.find({_id:req.params.id});
  
     let n=newAppoint.appointmentDetail.length;
-
+    req.flash('success','Appointment Book Successfully');
     res.render('frontSite/appointmentShow.ejs',{doctor,newAppoint:newAppoint.appointmentDetail[n-1]});
 })
 
@@ -337,6 +354,11 @@ app.get('/medifind/:id',async (req,res)=>{
         model:'User'
     }).populate('doctor');
     // console.log(appointments.appointmentDetail);
+    if(appointments==null){
+        req.flash("error",'No appointments');
+        res.redirect("/home");
+    }
+    console.log(appointments);
     res.render('appointmentControl.ejs',{appointments});
 })
 
