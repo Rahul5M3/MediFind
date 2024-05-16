@@ -38,40 +38,56 @@
         <!-- //-------------------------------------------------------------------------------------------- -->
         <div class="b">
             <p>LOOK FOR DOCTORS</p>
-            <form action="#" method="post">
+            <form action="/search/doctor" method="get">
                 <div class="row">
                     <div class="col">
                         <select name="Medicalfield" id="medicalfield" class="colSize">
-                            <option value="Medical Field">Medical Field</option>
+                            <option value="">Medical Field</option>
                             <option value="Ayurveda">Ayurveda</option>
                             <option value="Homeopathic">Homeopathic</option>
+                            <option value="ALLOPATHIC">ALLOPATHIC</option>
+                            <option value="TESTIMONIALS">TESTIMONIALS</option>
                         </select>
                     </div>
                     <div class="col">
                         <select name="Department" id="department" class="colSize">
-                            <option value="Department">Department</option>
-                            <option value="ENT">ENT</option>
+                            <option value="">Department</option>
+                            <option value="Physician">Physician</option>
+                            <option value="Urology">Urology</option>
+                            <option value="Orthodonotics">Orthodonotics</option>
+                            <option value="Ophthalmology">Ophthalmology</option>
+                            <option value="Paediatrics">Paediatrics</option>
                         </select>
                     </div>
-                    <div class="col">
+                    <!-- <div class="col">
                         <select name="specialistIn" id="specialistIn" class="colSize">
                             <option value="Specialist In">Specialist In</option>
                         </select>
-                    </div>
+                    </div> -->
                 </div>
 
                 <div class="row mt-1">
-                    <div class="col">
+                    <!-- <div class="col">
                         <input type="text" name="keyword" placeholder="keyword" class="colSize">
-                    </div>
+                    </div> -->
                     <div class="col">
                         <select name="country" id="country" class="colSize">
-                            <option value="Country">Country</option>
+                            <option value="">Country</option>
+                            <% for(let i=data.length-1; i>=0; i--){ %>
+                                <% if(data[i].country) { %>
+                            <option value="<%=data[i].country%>"><%=data[i].country%></option>
+                            <% } %>
+                            <% } %>
                         </select>
                     </div>
                     <div class="col">
                         <select name="state" id="state" class="colSize">
-                            <option value="State">State</option>
+                            <option value="">State</option>
+                            <% for(let i=data.length-1; i>=0; i--){ %>
+                                <% if(data[i].state) { %>
+                            <option value="<%=data[i].state%>"><%=data[i].state%></option>
+                            <% } %>
+                            <% } %>
                         </select>
                     </div>
                 </div>
@@ -79,14 +95,19 @@
                 <div class="row mt-1">
                     <div class="col">
                         <select name="city" id="city" class="colSize">
-                            <option value="City">City</option>
+                            <option value="">City</option>
+                            <% for(let i=data.length-1; i>=0; i--){ %>
+                                <% if(data[i].city) { %>
+                            <option value="<%=data[i].city%>"><%=data[i].city%></option>
+                            <% } %>
+                            <% } %>
                         </select>
                     </div>
-                    <div class="col">
+                    <!-- <div class="col">
                         <select name="location" id="location" class="colSize">
                             <option value="Location">Location</option>
                         </select>
-                    </div>
+                    </div> -->
                     <div class="col">
                         <button class="colSize" style="background-color: #0ead6a; color: white;"><i class="fa-solid fa-magnifying-glass" style="color: #ffffff;"></i>Search</button>
                     </div>

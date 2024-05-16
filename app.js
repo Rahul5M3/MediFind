@@ -164,6 +164,18 @@ app.post('/doctor/login',async (req,res)=>{
         res.redirect(redirectUrl);
     })
 
+    app.get('/logout',(req,res)=>{
+        req.logout((err)=>{
+            if(err){
+                return next(err);
+            }
+            else {
+                req.flash('success',"Successfully Loggout");
+                res.redirect('/home');
+            }
+        })
+    })
+
 //-----------------------------------------------------------
 
 app.post('/newDoctor',upload.single('docImage'),async (req,res)=>{
@@ -184,6 +196,9 @@ app.post('/newDoctor',upload.single('docImage'),async (req,res)=>{
             price:req.body.price,
             startTime:req.body.startTime,
             endTime:req.body.endTime,
+            country:req.body.country,
+            state:req.body.state,
+            city:req.body.city
         });
 
         if(req.file!=='undefined' && req.file!==undefined){
@@ -374,6 +389,27 @@ app.get('/deleteAppointment/:userId/:appointId',async (req,res)=>{
 })
 
 //-----------------------------------------------------------
+
+app.get("/search/doctor",async (req,res)=>{
+    let doctor=await Register.find({
+        $or :[
+            {country:req.query.country},
+            {city:req.query.city},
+            {department:req.query.Medicalfield},
+            {specialisation:req.query.Department}
+        ],
+    });
+
+    if(doctor.length==0){
+        console.log(doctor);
+        return res.redirect("/home");
+    }
+    console.log(doctor);
+    res.render('frontsite/searchedContent.ejs',{data:doctor});
+    
+})
+
+//----------------------------------------------------------
 
 
 app.all('*',(req,res)=>{
