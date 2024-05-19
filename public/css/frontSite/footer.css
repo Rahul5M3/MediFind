@@ -9,8 +9,11 @@
 }
 
 #footer {
-    width: 200px;
+    width: 400px;
+    display: flex;
 }
+
+
 
 .footer div {
     height: 100%;

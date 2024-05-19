@@ -373,7 +373,6 @@ app.get('/medifind/:id',async (req,res)=>{
         req.flash("error",'No appointments');
         res.redirect("/home");
     }
-    console.log(appointments);
     res.render('appointmentControl.ejs',{appointments});
 })
 
@@ -407,6 +406,46 @@ app.get("/search/doctor",async (req,res)=>{
     console.log(doctor);
     res.render('frontsite/searchedContent.ejs',{data:doctor});
     
+})
+
+app.get("/doctor/edit/:id", async (req,res)=>{
+    let doctor=await Register.find({_id:req.params.id});
+    res.render("frontSite/doctorEdit.ejs",{doctor});
+})
+
+app.post('/doctor/edit/:id', upload.single('docImage'), async (req,res)=>{
+
+    const updateDoctor= {
+        name: req.body.name,
+        contactNumber: req.body.contactNumber,
+        active: req.body.option,
+        registerNumber: req.body.registerNumber,
+        registerDate: req.body.registerDate,
+        activeFrom: req.body.activeFrom,
+        activeTo: req.body.activeTo,
+        email: req.body.email,
+        specialisation: req.body.Specialisation,
+        department: req.body.Department,
+        location: req.body.location,
+        price: req.body.price,
+        startTime: req.body.startTime,
+        endTime: req.body.endTime,
+        country: req.body.country,
+        state: req.body.state,
+        city: req.body.city
+    };
+
+    if(req.file){
+        updateDoctor.photo.url=req.file.path;
+        updateDoctor.photo.filename=req.file.filename;
+    } 
+
+    let doctor=await Register.updateOne(
+        { _id: req.params.id },
+        {$set: updateDoctor} 
+    );
+
+    res.redirect(`/medifind/${req.params.id}`);
 })
 
 //----------------------------------------------------------

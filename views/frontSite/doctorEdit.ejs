@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/frontSite/register.css">
+
+</head>
+<body>
+
+
+    
+    <div class="register">
+        <div class="a">
+            <div id="doctor">Doctor</div>
+        </div>
+
+        <div class="registerContent">
+          <form action="/doctor/edit/<%= doctor[0]._id %>" method="post" enctype="multipart/form-data">
+
+            <div class="form-floating mb-3">
+                <input type="text" name="name" class="form-control" id="floatingName" value="<%= doctor[0].name %>">
+                <label for="floatingName">Name</label>
+            </div>
+        
+            <div class="form-floating mb-3">
+                <input type="text" name="contactNumber" class="form-control" id="floatingContactNumber" value="<%= doctor[0].contactNumber %>">
+                <label for="floatingContactNumber">Contact Number</label>
+            </div>
+        
+            <div class="row mb-4">
+                <div class="col">
+                    <input type="radio" id="option1" name="option" value="Active" <%= doctor[0].active === 'yes' ? 'checked' : '' %>>
+                    <label for="option1">Active</label>
+                </div>
+                <div class="col">
+                    <input type="radio" id="option2" name="option" value="De-Active" <%= doctor[0].active === 'no' ? 'checked' : '' %>>
+                    <label for="option2">De-Active</label>
+                </div>
+                <div class="col">
+                    <input type="text" id="country" name="country" placeholder="Country" value="<%= doctor[0].country %>">
+                </div>
+                <div class="col">
+                    <input type="text" id="state" name="state" placeholder="State" value="<%= doctor[0].state %>">
+                </div>
+                <div class="col">
+                    <input type="text" id="city" name="city" placeholder="City" value="<%= doctor[0].city %>">
+                </div>
+            </div>
+        
+            <div class="form-floating mb-2">
+                <input type="text" name="registerNumber" class="form-control" id="floatingRegisterNumber" value="<%= doctor[0].registerNumber %>">
+                <label for="floatingRegisterNumber">Registration Number</label>
+            </div>
+        
+            <div class="form-floating mb-3">
+                <input type="text" name="location" class="form-control" id="floatingLocation" value="<%= doctor[0].location %>">
+                <label for="floatingLocation">Location</label>
+            </div>
+        
+            <div class="row mb-3">
+                <div class="col">
+                    <label for="Specialisation" class="form-label">Specialisation</label>
+                    <select name="Specialisation" id="Specialisation" required>
+                        <option value="Physician" <%= doctor[0].Specialisation === 'Physician' ? 'selected' : '' %>>Physician</option>
+                        <option value="Urology" <%= doctor[0].Specialisation === 'Urology' ? 'selected' : '' %>>Urology</option>
+                        <option value="Orthodontics" <%= doctor[0].Specialisation === 'Orthodontics' ? 'selected' : '' %>>Orthodontics</option>
+                        <option value="Ophthalmology" <%= doctor[0].Specialisation === 'Ophthalmology' ? 'selected' : '' %>>Ophthalmology</option>
+                        <option value="Paediatrics" <%= doctor[0].Specialisation === 'Paediatrics' ? 'selected' : '' %>>Paediatrics</option>
+                    </select>
+                </div>
+        
+                <div class="col">
+                    <label for="Department" class="form-label">Department</label>
+                    <select name="Department" id="Department" required>
+                        <option value="AYURVEDA" <%= doctor[0].Department === 'AYURVEDA' ? 'selected' : '' %>>AYURVEDA</option>
+                        <option value="HOMEOPATHIC" <%= doctor[0].Department === 'HOMEOPATHIC' ? 'selected' : '' %>>HOMEOPATHIC</option>
+                        <option value="ALLOPATHIC" <%= doctor[0].Department === 'ALLOPATHIC' ? 'selected' : '' %>>ALLOPATHIC</option>
+                        <option value="TESTIMONIALS" <%= doctor[0].Department === 'TESTIMONIALS' ? 'selected' : '' %>>TESTIMONIALS</option>
+                    </select>
+                </div>
+        
+                <div class="col">
+                    <label for="Price" class="form-label">Price</label>
+                    <input type="number" name="price" id="Price" value="<%= doctor[0].price %>">
+                </div>
+        
+                <div class="col mt-4">
+                    <label for="startTime" class="form-label">Start Timing</label>
+                    <input type="time" name="startTime" id="startTime" value="<%= doctor[0].startTime %>">
+                </div>
+        
+                <div class="col mt-4">
+                    <label for="endTime" class="form-label">End Timing</label>
+                    <input type="time" name="endTime" id="endTime" value="<%= doctor[0].endTime %>">
+                </div>
+            </div>
+        
+            <div class="mb-2">
+                <label for="registerDate" class="form-label">Register Date</label>
+                <input type="date" name="registerDate" class="form-control" id="registerDate" value="<%= doctor[0].registerDate %>">
+            </div>
+        
+            <div class="row mb-2">
+                <div class="col">
+                    <label for="activeFrom" class="form-label">Active From</label>
+                    <input type="date" name="activeFrom" class="form-control" id="activeFrom" value="<%= doctor[0].activeFrom %>">
+                </div>
+                <div class="col">
+                    <label for="activeTo" class="form-label">Active To</label>
+                    <input type="date" name="activeTo" class="form-control" id="activeTo" value="<%= doctor[0].activeTo %>">
+                </div>
+            </div>
+        
+            <div class="row g-3 mb-3">
+                <div class="col-md-4">
+                    <label for="inputEmail4" class="form-label">Email</label>
+                    <input name="email" type="email" class="form-control" id="inputEmail4" value="<%= doctor[0].email %>">
+                </div>
+                <div class="col-md-4">
+                    <label for="inputUsername" class="form-label">Username</label>
+                    <input name="username" type="text" class="form-control" id="inputUsername" value="<%= doctor[0].username %>" disabled>
+                </div>
+                <div class="col-md-4">
+                    <label for="inputPassword4" class="form-label">Password</label>
+                    <input name="password" type="password" class="form-control" id="inputPassword4" value="<%= doctor[0].password %>" disabled>
+                </div>
+            </div>
+        
+            <div>
+                <input type="file" name="docImage">
+            </div>
+        
+            <button type="submit" class="registerButton">UPDATE</button>
+        </form>
+        
+        </div>
+
+        
+    <script src="js/register.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
