@@ -188,8 +188,8 @@ body {
     .ratingReviewBox {
         display: none;
         position: fixed;
-        top: 360px;
-        left: 60px;
+        top: 260px;
+        left: 50px;
         z-index: 2;
         height: 232.6px;
         width: 275px;
