@@ -45,3 +45,10 @@
     text-decoration: none;
     color: black;
 }
+
+
+@media screen and (max-width:375.2px){
+    .footer {
+        width: 375px;
+    }
+}

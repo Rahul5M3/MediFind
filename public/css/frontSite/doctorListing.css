@@ -49,3 +49,21 @@ body {
     flex: 1;
 }
 
+
+
+@media screen and (max-width:375.2px){
+    .box {
+        height: 122px;
+        width: 96%;
+        background-color: white;
+        position: relative;
+        left: 8px;
+        top: 30px;
+        padding: 10px;
+        margin: 0px 0px 7px;
+        border-radius: 10px;
+        display: flex;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        margin-bottom: 1rem
+    }
+}

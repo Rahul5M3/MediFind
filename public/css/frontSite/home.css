@@ -202,7 +202,7 @@ body {
     border-radius: 30px;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     opacity: 0;
-    transition: opacity 1s ease-in-out;
+    transition: opacity 0.5s ease-in-out;
 }
 
 .section.visible {
@@ -280,4 +280,84 @@ body {
 
 .content6 {
     top: 500px;
+}
+
+
+@media screen and (max-width:375.2px){
+    
+
+    .advertisment .a #ab {
+       display: none;
+    }
+
+    .advertisment .a #aa {
+        flex: 1;
+     }
+
+     .advertisment .a img {
+        border-radius: 10px;
+     }
+
+     .advertisment {
+        left: 40px;
+        border-radius: 30px;
+    }
+
+    .searchingBox {
+        left: 6px;
+        width: 96%;
+    }
+
+    .searchingBox .b  {
+        height: 240px;
+        padding: 12px;
+    }
+
+    .searchingBox .b form {
+        width: 300px;
+    }
+
+    .searchingBox .b2  {
+        height: 240px;
+        width: 360.19px;
+    }
+
+    .searchingBox .b2 form>div {
+        margin-bottom: 1rem;
+    }
+
+
+    .content {
+        left: 20px;
+        top: 300px;
+    }
+
+    .content .a div {
+        width: 310px;
+    }
+
+    .content2{
+        left: 20px;
+        top: 350px;
+    }
+
+    .content2 .a div {
+        width: 350px;
+    }
+
+    .content3 {
+        top: 400px;
+    }
+    
+    .content4 {
+        top: 450px;
+    }
+    
+    .content5 {
+        top: 500px;
+    }
+    
+    .content6 {
+        top: 550px;
+    }
 }

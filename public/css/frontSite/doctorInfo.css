@@ -139,3 +139,75 @@ body {
     justify-content: center;
     align-items: center;
 }
+
+
+
+@media screen and (max-width:375.2px){
+    .docImage {
+        height: 300px;
+        width: 300px;
+        margin: 12px 36px;
+        margin-top: 56px;
+        margin-bottom: 0;
+    }
+
+    .docPhoto {
+        height: 300px;
+        width: 300px;
+        /* background-color: aquamarine; */
+        border-radius: 50%;
+        border: 1px solid black;
+    }
+    
+    .docPhoto img {
+        height: inherit;
+        width: inherit;
+        border-radius: inherit;
+        /* background-size: cover; */
+    }
+
+    .docInfo {
+        height: 140px;
+        width: 96%;
+        /* background-color: burlywood; */
+        margin: 38px 0px;
+        position: relative;
+        left: 10px;
+    }
+
+    .straightLine {
+        width: 240px;
+        margin: 20px 66px;
+    }
+    
+    .review {
+        left: 10px;
+        margin: 28px 0px;
+    }
+
+    .ratingReviewBox {
+        display: none;
+        position: fixed;
+        top: 360px;
+        left: 60px;
+        z-index: 2;
+        height: 232.6px;
+        width: 275px;
+    }
+
+    .appointment {
+        height: 26px;
+        width: 180px;
+        background-color: #0ead6a;
+        border-radius: 20px;
+        padding: 0px 18px;
+        position: fixed;
+        left: 10px;
+        top: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        z-index: 1;
+    }
+}
