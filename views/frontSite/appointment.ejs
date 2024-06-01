@@ -27,11 +27,11 @@
         <form action="/appointment/<%=doctor[0]._id%>" method="post">
             <div id="b">
                 <div class="form-floating mt-4 mb-3">
-                    <input name="date" type="date" class="form-control" id="floatingInput" placeholder="">
+                    <input name="date" type="date" class="form-control" id="floatingInput" placeholder="" required>
                     <label for="floatingInput">Appointment Date</label>
                   </div>
 
-                  <select name="time" class="form-select form-select-sm mb-3" aria-label="Large select example">
+                  <select name="time" class="form-select form-select-sm mb-3" aria-label="Large select example" required>
                     <option selected>Appointment Time</option>
                     <option value="9:00">9:00 AM</option>
                     <option value="10:00">10:00 AM</option>
@@ -47,7 +47,7 @@
                   </select>
 
                   <div class="form-floating mb-3">
-                    <input name="disease" type="text" class="form-control" id="floatingInput" placeholder="">
+                    <input name="disease" type="text" class="form-control" id="floatingInput" placeholder="" required>
                     <label for="floatingInput">Disease</label>
                   </div>
             </div>

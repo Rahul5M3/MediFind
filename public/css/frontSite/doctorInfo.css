@@ -1,5 +1,5 @@
 body {
-    height: 220vh;
+    height: 260vh;
 }
 
 .appointment {
@@ -138,6 +138,26 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.appointmentBox {
+    height: 560px;
+    width: 98%;
+    background-color: rgb(211, 211, 211,0.4);
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.aappointment {
+    background-color: white;
+    padding: 1rem;
+    border-radius: 20px;
+}
+
+.aappointment:hover {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 

@@ -66,9 +66,10 @@ body {
     font-size: large;
 }
 
-button {
+.bttn {
     height: 60px;
     width: 98%;
+    text-align: center;
     border: 0;
     background-color: #0ead6a;
     position: fixed;
@@ -78,3 +79,4 @@ button {
     border-radius: 30px;
     cursor: pointer;
 }
+

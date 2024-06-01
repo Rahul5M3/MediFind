@@ -99,11 +99,11 @@
             <!-- <p class="reviewBox">Write a Review >></p> -->
         </div>
         <!-- //----------------------------------------------------------------------------------review content here code  -->
-        
+      <div class="appointmentBox">
         <% if(appointment!=null){ %>
             <% for(let i=0; i<appointment.appointmentDetail.length; i++){ %>
-                <% if(appointment.appointmentDetail[i].date==todayDate && appointment.appointmentDetail[i].checked=='no'){ %>
-        <div class="reviewContent ">
+                <% if(appointment.appointmentDetail[i].date==todayDate && appointment.appointmentDetail[i].checked=="no"){ %>
+        <div class="reviewContent aappointment">
             <div class="a">
                 <div style="font-weight: bold;"><%=appointment.appointmentDetail[i].user.name%></div>
                 <div style="color: black;">
@@ -120,7 +120,7 @@
                     <% if (period === 'PM') { %>
                         Time : <%=appointment.appointmentDetail[i].time%> PM
                     <% } else { %>
-                        Time :<%=appointment.appointmentDetail[i].time%> AM
+                        Time : <u><%=appointment.appointmentDetail[i].time%></u> AM
                     <% } %>
                     
                 </div>
@@ -130,6 +130,8 @@
         <% } %>
         <% } %>
         <% } %>
+
+      </div>    
      
       
         

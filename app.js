@@ -325,7 +325,6 @@ app.get('/appointment/:id', isLoggedIn, async (req,res)=>{
 })
 
 app.post('/appointment/:id', async (req,res)=>{
-
     let appointments=await Appointment.find({
         doctor:req.params.id,
         'appointmentDetail.date':req.body.date,
@@ -383,7 +382,6 @@ app.get('/deleteAppointment/:userId/:appointId',async (req,res)=>{
         { arrayFilters: [{ 'elem.user': req.params.userId }] }
     );
     let appointments=await Appointment.find({_id:req.params.appointId});
-    // console.log(appointments);
     res.redirect(`/medifind/${appointments[0].doctor}`);
 })
 
