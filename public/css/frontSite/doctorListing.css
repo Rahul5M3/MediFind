@@ -24,7 +24,7 @@ body {
 
 .box #a img {
     height: 90px;
-    width: 40px;
+    width: 90px;
     background-color: black;
     border-radius: 50%;
 }
@@ -68,8 +68,10 @@ body {
         margin-bottom: 1rem
     }
 
-    .box .a img {
-        height: inherit;
-        width: inherit;
+    .box #a img {
+        height: 90px;
+        width: 90px;
+        background-color: black;
+        border-radius: 50%;
     }
 }
