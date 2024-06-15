@@ -361,3 +361,9 @@ body {
         top: 550px;
     }
 }
+
+@media screen and (max-width:365px){
+    .searchingBox .b {
+        width: 355px;
+    }
+}
