@@ -401,7 +401,7 @@ app.get("/search/doctor",async (req,res)=>{
         console.log(doctor);
         return res.redirect("/home");
     }
-    console.log(doctor);
+    // console.log(doctor);
     res.render('frontsite/searchedContent.ejs',{data:doctor});
     
 })
