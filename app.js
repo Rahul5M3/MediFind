@@ -398,7 +398,8 @@ app.get("/search/doctor",async (req,res)=>{
     });
 
     if(doctor.length==0){
-        console.log(doctor);
+        // console.log(doctor);
+        
         return res.redirect("/home");
     }
     // console.log(doctor);
